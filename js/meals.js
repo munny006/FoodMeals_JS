@@ -39,7 +39,12 @@ const loadMealDetail = idMeal => {
   
   fetch(url)
   .then(res => res.json())
-  .then(data=>console.log(data));
+  .then(data=>displayMealsDetails(data.meals[0]));
   console.log(idMeal);
+}
+const displayMealsDetails = meal =>{
+  document.getElementById('mealsDetailsLabel').innerText = meal.strMeal;
+  const mealDetails = document.getElementById('mealsDetailsBody');
+  mealDetails.innerHTML = `<img src="${meal.strMealThumb}"class="img-fluid">`
 }
 loadMeals('rice');
